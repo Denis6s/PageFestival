@@ -1,0 +1,83 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+.contenedor-boletos {
+    background-color: v.$gris1;
+
+    h3 {
+        color: v.$blanco;
+    }
+
+    .boletos {
+        @include m.contenedor;
+        @include m.tablet {
+            @include m.grid(2);
+        }
+    }
+}
+
+.pase {
+    transition: transform .5s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &-nombre {
+        font-size: 2.8rem;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        color: v.$blanco;
+    }
+    //Comparte codigo
+    &-header,
+    &-footer {
+        padding: .5rem;
+
+        p {
+            text-align: center;
+            color: v.$blanco;
+            margin: 0;
+        }
+    }
+    //Especifico cada uno de ellos
+    &-header {
+        background-color: v.$violeta;
+        p {
+            font-size: 2.6rem;
+            text-transform: uppercase;
+            padding: 1rem 0;
+        }
+    }
+
+    &-body {
+        background-color: v.$blanco;
+        ul {
+            @include m.resetear-lista;
+
+            li {
+                font-size: 2.5rem;
+                padding: 2rem;
+                border-bottom: 1px solid #E1E1E1;
+            }
+        }
+    }
+
+    &-footer {
+        background-color: v.$blanco;
+        padding: 3rem;
+        p {
+            font-size: 2.5rem;
+            padding: 1rem 0;
+            color: v.$blanco;
+            font-weight: bold;
+            background-color: v.$naranja;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(v.$naranja, $amount: 7);
+            }
+        }
+    }
+}
