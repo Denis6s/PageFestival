@@ -24,9 +24,12 @@ function crearGaleria() {
   const galeria = document.querySelector(".galeria-imagenes");
 
   for (let index = 1; index <= cantidadImagen; index++) {
-    const imagen = document.createElement("IMG");
-    imagen.src = `src/img/gallery/full/${index}.jpg`;
-    imagen.alt = "Imagen Galeria";
+    const imagen = document.createElement("PICTURE");
+    imagen.innerHTML = `
+    <source srcset="build/img/gallery/thumb/${index}.avif" type="image/avif">
+    <source srcset="build/img/gallery/thumb/${index}.webp" type="image/webp">
+    <img loading="lazy" width="200" height="300" src="build/img/gallery/thumb/${index}.jpg" alt="imagen galeria">
+`;
 
     //Event Handler : detecta y responde lo que clickea el usuario
     imagen.onclick = function () {
@@ -41,9 +44,12 @@ function crearGaleria() {
 function mostrarImagen(index) {
   //generando la imgen el modal
 
-  const imagen = document.createElement("IMG");
-  imagen.src = `src/img/gallery/full/${index}.jpg`;
-  imagen.alt = "Imagen Galeria";
+  const imagen = document.createElement("PICTURE");
+  imagen.innerHTML = `
+    <source srcset="build/img/gallery/full/${index}.avif" type="image/avif">
+    <source srcset="build/img/gallery/full/${index}.webp" type="image/webp">
+    <img loading="lazy" width="200" height="300" src="build/img/gallery/full/${index}.jpg" alt="imagen galeria">
+`;
 
   //creando la ventana modal
   const modal = document.createElement("DIV");
